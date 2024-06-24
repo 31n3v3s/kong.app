@@ -440,18 +440,44 @@ class CartScreen extends StatelessWidget {
 }
 
 class LoginScreen extends StatelessWidget {
+  final TextEditingController _emailController = TextEditingController();
+  final TextEditingController _passwordController = TextEditingController();
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
         title: Text('Login'),
       ),
-      body: Center(
-        child: ElevatedButton(
-          onPressed: () {
-            Navigator.of(context).pushReplacementNamed('/');
-          },
-          child: Text('Login'),
+      body: Padding(
+        padding: const EdgeInsets.all(16.0),
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            TextField(
+              controller: _emailController,
+              decoration: InputDecoration(labelText: 'Email'),
+            ),
+            TextField(
+              controller: _passwordController,
+              decoration: InputDecoration(labelText: 'Senha'),
+              obscureText: true,
+            ),
+            SizedBox(height: 20),
+            ElevatedButton(
+              child: Text('Login'),
+              onPressed: () {
+                // Implement login functionality here
+                Navigator.of(context).pushReplacementNamed('/');
+              },
+            ),
+            TextButton(
+              child: Text('Não tem uma conta? Registre-se'),
+              onPressed: () {
+                Navigator.of(context).pushReplacementNamed('/signup');
+              },
+            ),
+          ],
         ),
       ),
     );
@@ -459,18 +485,44 @@ class LoginScreen extends StatelessWidget {
 }
 
 class SignupScreen extends StatelessWidget {
+  final TextEditingController _emailController = TextEditingController();
+  final TextEditingController _passwordController = TextEditingController();
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Sign Up'),
+        title: Text('Registrar-se'),
       ),
-      body: Center(
-        child: ElevatedButton(
-          onPressed: () {
-            Navigator.of(context).pushReplacementNamed('/');
-          },
-          child: Text('Sign Up'),
+      body: Padding(
+        padding: const EdgeInsets.all(16.0),
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            TextField(
+              controller: _emailController,
+              decoration: InputDecoration(labelText: 'Email'),
+            ),
+            TextField(
+              controller: _passwordController,
+              decoration: InputDecoration(labelText: 'Senha'),
+              obscureText: true,
+            ),
+            SizedBox(height: 20),
+            ElevatedButton(
+              child: Text('Registrar'),
+              onPressed: () {
+                // Implement signup functionality here
+                Navigator.of(context).pushReplacementNamed('/');
+              },
+            ),
+            TextButton(
+              child: Text('Já tem uma conta? Faça login'),
+              onPressed: () {
+                Navigator.of(context).pushReplacementNamed('/login');
+              },
+            ),
+          ],
         ),
       ),
     );
